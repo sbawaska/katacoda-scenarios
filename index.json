@@ -23,6 +23,7 @@
       }
     ],
     "intro": {
+      "courseData": "scripts/install-dependencies.sh",
       "text": "intro.md"
     },
     "finish": {
