@@ -8,7 +8,14 @@ rm riff-linux-amd64.tgz
 mv ./riff /usr/local/bin/riff
 
 # install kapp
-curl -L https://k14s.io/install.sh | bash
+wget https://github.com/k14s/kapp/releases/download/v0.19.0/kapp-linux-amd64
+mv ./kapp-linux-amd64 /usr/local/bin/kapp
+chmod +x /usr/local/bin/kapp
+
+# install ytt
+wget https://github.com/k14s/ytt/releases/download/v0.25.0/ytt-linux-amd64
+mv ./ytt-linux-amd64 /usr/local/bin/ytt
+chmod +x /usr/local/bin/ytt
 
 # install helm3
 rm /usr/local/bin/helm
