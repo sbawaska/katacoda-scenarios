@@ -13,7 +13,7 @@ kapp deploy -n apps -a riff-builders -f https://storage.googleapis.com/projectri
 kapp deploy -n apps -a riff-build -f https://storage.googleapis.com/projectriff/release/0.5.0-snapshot/riff-build.yaml -y
 ```{{execute}}
 
-We now install the knative runtime component. knative will ensure that your function scales from 0 -> N and N -> 0. It will also track revisions to your functions and allow you to route traffic to specific revisions.
+We now install the knative runtime component. knative will ensure that your function scales from 0 -> N and N -> 0.
 
 ```
 ytt -f https://storage.googleapis.com/projectriff/release/0.5.0-snapshot/istio.yaml -f https://storage.googleapis.com/projectriff/charts/overlays/service-nodeport.yaml --file-mark istio.yaml:type=yaml-plain | kapp deploy -n apps -a istio -f - -y
