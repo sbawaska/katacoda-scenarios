@@ -24,7 +24,6 @@
     ],
     "intro": {
       "code": "scripts/install-dependencies.sh",
-      "courseData": "scripts/start-k8s.sh",
       "text": "intro.md"
     },
     "finish": {
