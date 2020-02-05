@@ -1,11 +1,11 @@
-Ensure that kubernetes is running by running `kubectl get pods -A`{{execute}} and waiting for all pods in `kube-system` to start.
+Ensure that kubernetes is running by issuing `kubectl get pods -A`{{execute}} and waiting for all pods in `kube-system` to start.
 Open an additional terminal by clicking on the `+` next to Terminal and run `watch kubectl get pods -A` to see all the system as well as user pods being created.
 
 We will use [kapp](https://get-kapp.io/) to install riff within the kubernetes cluster. kapp works by converging application resources based on comparison between provided files and live objects in the cluster.
 Let us start off by creating a namespace for kapp to store its configuration.
 `kubectl create ns apps`{{execute}}
 
-We will now install riff build. This component will analyze your function and build a container by providing an appropriate language runtime and function invoker layer.
+We will now install riff's build component. This component will analyze your function and build a container by providing an appropriate language runtime and function invoker layer.
 
 ```
 kapp deploy -n apps -a cert-manager -f https://storage.googleapis.com/projectriff/release/0.5.0-snapshot/cert-manager.yaml -y
