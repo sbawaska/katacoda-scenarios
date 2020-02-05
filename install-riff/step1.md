@@ -8,15 +8,20 @@ We will now install riff build. This component will analyze your function and bu
 
 ```
 kapp deploy -n apps -a cert-manager -f https://storage.googleapis.com/projectriff/release/0.5.0-snapshot/cert-manager.yaml -y
+
 kapp deploy -n apps -a kpack -f https://storage.googleapis.com/projectriff/release/0.5.0-snapshot/kpack.yaml -y
+
 kapp deploy -n apps -a riff-builders -f https://storage.googleapis.com/projectriff/release/0.5.0-snapshot/riff-builders.yaml -y
+
 kapp deploy -n apps -a riff-build -f https://storage.googleapis.com/projectriff/release/0.5.0-snapshot/riff-build.yaml -y
 ```{{execute}}
 
 We now install the knative runtime component. knative will ensure that your function scales from 0 -> N and N -> 0.
 
 ```
-kapp deploy -n apps -a contour -f https://storage.googleapis.com/projectriff/release/0.5.0-snapshot/contour.yaml -y
+ytt -f https://storage.googleapis.com/projectriff/release/0.5.0-snapshot/contour.yaml -f https://storage.googleapis.com/projectriff/charts/overlays/service-nodeport.yaml --file-mark contour.yaml:type=yaml-plain | kapp deploy -n apps -a contour -f - -y
+
 kapp deploy -n apps -a knative -f https://storage.googleapis.com/projectriff/release/0.5.0-snapshot/knative.yaml -y
+
 kapp deploy -n apps -a riff-knative-runtime -f https://storage.googleapis.com/projectriff/release/0.5.0-snapshot/riff-knative-runtime.yaml -y
 ```{{execute}}
