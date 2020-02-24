@@ -1,5 +1,5 @@
 echo "Starting kubernetes using minikube..."
-minikube start --insecure-registry "172.0.0.0/24:5000" > /dev/null 2>&1 &
+minikube start > /dev/null 2>&1 &
 echo "installing required tools..."
 # install riff cli
 wget https://storage.googleapis.com/projectriff/riff-cli/releases/v0.5.0-snapshot/riff-linux-amd64.tgz

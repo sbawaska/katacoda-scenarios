@@ -1,8 +1,20 @@
 We need a registry to push the container image that is built by riff. You can use dockerhub, gcr or any other container registry. For this tutorial we will start the container registry provided by minikube as an addon.
-`minikube addons enable registry`{{execute}}. Then ensure that the registry pod has been started.
+```
+helm install private stable/docker-registry --namespace kube-system \
+--set image.tag=2.7.1 \
+--set service.type=NodePort \
+--set service.nodePort=35000
+```{{execute}}. Then ensure that the registry pod has been started.
 
+```
+kubectl port-forward --namespace kube-system \
+$(kubectl get po -n kube-system | grep private-docker-registry | \
+awk '{print $1;}') 5000:5000 &
+```{{execute}}
+
+`export REGISTRY=127.0.0.1:35000`{{execute}}
 Now, provide the registry credentials so that riff can push the built images:
-`riff credentials apply my-reg --registry http://$(minikube ip):5000 --default-image-prefix $(minikube ip):5000`{{execute}}
+`riff credentials apply my-reg --registry http://$REGISTRY --default-image-prefix $REGISTRY`{{execute}}
 In our case there are no credentials, only configure the registry URL.
 
 Then create a function using code from a repository:
