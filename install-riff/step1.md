@@ -1,5 +1,5 @@
 Ensure that kubernetes is running by issuing `kubectl get pods -A`{{execute}} and waiting for all pods in `kube-system` to start.
-Open an additional terminal by clicking on the `+` next to Terminal and run `watch kubectl get pods -A` to see all the system as well as user pods being created.
+Run `watch kubectl get pods -A`{{execute T2}} and switch to `All pods` terminal to see all the system as well as user pods being created.
 
 We will use [kapp](https://get-kapp.io/) to install riff within the kubernetes cluster. kapp works by converging application resources based on comparison between provided files and live objects in the cluster.
 Let us start off by creating a namespace for kapp to store its configuration.
