@@ -1,5 +1,10 @@
 echo "Starting kubernetes using minikube..."
 minikube start > /dev/null 2>&1 &
+
+# start registry
+echo "starting a local registry for built container images"
+docker run -d -p 5000:5000 --name registry registry:2
+
 echo "installing required tools..."
 # install riff cli
 wget https://storage.googleapis.com/projectriff/riff-cli/releases/v0.5.0-snapshot/riff-linux-amd64.tgz
