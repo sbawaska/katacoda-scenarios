@@ -31,7 +31,10 @@
     }
   },
   "environment": {
-    "uilayout": "terminal"
+    "uilayout": "terminal",
+    "terminals": [
+      {"name": "Terminal", "target": "host01"},
+      {"name": "All pods", "command": "kubectl get pods -A", "target": "host01"}]
   },
   "backend": {
     "port": 30000,
