@@ -3,7 +3,7 @@ We need a registry to push the container image that is built by riff. You can us
 helm install private stable/docker-registry --namespace kube-system \
 --set image.tag=2.7.1 \
 --set service.type=NodePort \
---set service.nodePort=35000
+--set service.nodePort=31500
 ```{{execute}}. Then ensure that the registry pod has been started.
 
 ```
@@ -12,7 +12,8 @@ $(kubectl get po -n kube-system | grep private-docker-registry | \
 awk '{print $1;}') 5000:5000 &
 ```{{execute}}
 
-`export REGISTRY=127.0.0.1:35000`{{execute}}
+`export REGISTRY=[[HOST_SUBDOMAIN]]-5000-[[KATACODA_HOST]].environments.katacoda.com`
+`export REGISTRY=127.0.0.1:31500`{{execute}}
 Now, provide the registry credentials so that riff can push the built images:
 `riff credentials apply my-reg --registry http://$REGISTRY --default-image-prefix $REGISTRY`{{execute}}
 In our case there are no credentials, only configure the registry URL.
