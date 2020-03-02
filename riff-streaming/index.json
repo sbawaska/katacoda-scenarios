@@ -27,7 +27,7 @@
     },
     "assets": {
       "host01": [
-        {"file": "time-averager", "target": "~/"}
+        {"file": "*", "target": "~/"}
       ]
     }
   },
