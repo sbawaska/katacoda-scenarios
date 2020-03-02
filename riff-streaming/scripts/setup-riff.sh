@@ -22,6 +22,9 @@ wget https://github.com/k14s/ytt/releases/download/v0.25.0/ytt-linux-amd64
 mv ./ytt-linux-amd64 /usr/local/bin/ytt
 chmod +x /usr/local/bin/ytt
 
+# install helm 3
+curl https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bash
+
 echo "tools installed!"
 echo "Waiting for Kubernetes to start. This may take a few moments, please wait..."
 while [ `minikube status &>/dev/null; echo $?` -ne 0 ]; do sleep 1; done
@@ -43,6 +46,8 @@ echo "riff streaming runtime installed!"
 echo "installing kafka"
 helm repo add incubator https://storage.googleapis.com/kubernetes-charts-incubator
 kubectl create namespace kafka
+
+helm version
 helm install kafka --namespace kafka incubator/kafka --set replicas=1 --set zookeeper.replicaCount=1 --wait
 echo "kafka installed!"
 
