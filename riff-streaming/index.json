@@ -19,6 +19,7 @@
       }
     ],
     "intro": {
+      "code": "scripts/setup-riff.sh",
       "text": "intro.md"
     },
     "finish": {
