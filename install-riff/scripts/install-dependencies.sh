@@ -23,6 +23,6 @@ mv ./ytt-linux-amd64 /usr/local/bin/ytt
 chmod +x /usr/local/bin/ytt
 
 echo "tools installed!"
-echo "Starting Kubernetes. This may take a few moments, please wait..."
+echo "Waiting for Kubernetes to start. This may take a few moments, please wait..."
 while [ `minikube status &>/dev/null; echo $?` -ne 0 ]; do sleep 1; done
 echo "Kubernetes Started"
