@@ -9,7 +9,7 @@ import reactor.math.MathFlux;
 public class TimeAverager implements Function&lt;Flux&lt;Float&gt;, Flux&lt;Float&gt;&gt; {
 
 	@Override
-	public Flux<Float> apply(Flux<Float> floatFlux) {
+	public Flux&lt;Float&gt; apply(Flux&lt;Float&gt; floatFlux) {
 		return floatFlux.window(Duration.ofSeconds(10)).flatMap(MathFlux::averageFloat);
 	}
 }
