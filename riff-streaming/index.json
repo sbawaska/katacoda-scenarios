@@ -28,15 +28,15 @@
     },
     "assets": {
       "host01": [
-        {"file": "time-averager/pom.xml", "target": "/root/time-averager/pom.xml"},
-        {"file": "time-averager/src/main/java/com/acme/TimeAverager.java", "target": "/root/time-averager/src/main/java/com/acme/TimeAverager.java"}
+        {"file": "time-averager/pom.xml", "target": "/root/time-averager/"},
+        {"file": "time-averager/src/main/java/com/acme/TimeAverager.java", "target": "/root/time-averager/src/main/java/com/acme/"}
       ]
     }
   },
   "environment": {
     "uilayout": "editor-terminal",
     "uisettings": "java",
-    "uieditorpath": "/root/time-averager/src/main/java/com/acme"
+    "uieditorpath": "/root/time-averager/src/main/java/com/acme/"
   },
   "backend": {
     "imageid": "minikube-running"
