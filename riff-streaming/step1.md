@@ -6,8 +6,8 @@ When using the streaming runtime, messages flow between functions using streams,
 Since we have kafka installed in our cluster, let us create a kafka gateway.
 ```
 riff streaming kafka-gateway create franz --bootstrap-servers kafka.kafka:9092 --tail
-```{{execute}}.
-Let us now create streams that allow the flow of messages, this will be reconciled with the backing resources in the concrete message broker. In our case, it will create topics in kafka.
+```{{execute}}
+Let us now create streams that allow the flow of messages. In our case, this will create topics in kafka.
 ```
 riff streaming stream create in  --gateway franz --content-type application/json
 riff streaming stream create out --gateway franz --content-type application/json

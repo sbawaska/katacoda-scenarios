@@ -6,7 +6,7 @@ import java.util.function.Function;
 import reactor.core.publisher.Flux;
 import reactor.math.MathFlux;
 
-public class TimeAverager implements Function<Flux<Float>, Flux<Float>> {
+public class TimeAverager implements Function&lt;Flux&lt;Float&gt;, Flux&lt;Float&gt;&gt; {
 
 	@Override
 	public Flux<Float> apply(Flux<Float> floatFlux) {
