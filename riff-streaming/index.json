@@ -28,8 +28,7 @@
     },
     "assets": {
       "host01": [
-        {"file": "time-averager/pom.xml", "target": "/root/time-averager/"},
-        {"file": "time-averager/src/main/java/com/acme/TimeAverager.java", "target": "/root/time-averager/src/main/java/com/acme/"}
+        {"file": "time-averager/pom.xml", "target": "/root/time-averager/"}
       ]
     }
   },
