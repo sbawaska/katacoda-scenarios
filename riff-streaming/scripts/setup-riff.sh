@@ -47,7 +47,6 @@ echo "installing kafka"
 helm repo add incubator https://storage.googleapis.com/kubernetes-charts-incubator
 kubectl create namespace kafka
 
-helm version
 helm install kafka --namespace kafka incubator/kafka --set replicas=1 --set zookeeper.replicaCount=1 --wait
 echo "kafka installed!"
 
