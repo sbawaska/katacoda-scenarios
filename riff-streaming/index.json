@@ -21,6 +21,7 @@
     ],
     "intro": {
       "code": "scripts/setup-riff.sh",
+      "courseData": "scripts/warmup.sh",
       "text": "intro.md"
     },
     "finish": {
