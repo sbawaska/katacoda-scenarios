@@ -3,7 +3,7 @@
   "description": "Install riff's streaming runtime and deploy a streaming function",
   "difficulty": "Intermediate",
   "time": "20",
-  "files": ["TimeAverager.java"],
+  "files": ["src/main/java/com/acme/TimeAverager.java"],
   "details": {
     "steps": [
       {
@@ -34,9 +34,10 @@
     }
   },
   "environment": {
+    "terminals": [{"name": "All pods", "command": "kubectl get pods -A", "target": "host01"}],
     "uilayout": "editor-terminal",
     "uisettings": "java",
-    "uieditorpath": "/root/time-averager/src/main/java/com/acme/"
+    "uieditorpath": "/root/time-averager/"
   },
   "backend": {
     "imageid": "minikube-running"
