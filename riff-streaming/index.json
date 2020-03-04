@@ -35,9 +35,9 @@
   },
   "environment": {
     "terminals": [
+      {"name": "AllPods", "target": "host01"},
       {"name": "InputEvents", "target": "host01"},
-      {"name": "OutputEvents", "target": "host01"},
-      {"name": "AllPods", "command": "watch kubectl get pods -A", "target": "host01"}
+      {"name": "OutputEvents", "target": "host01"}
     ],
     "uilayout": "editor-terminal",
     "uisettings": "java",

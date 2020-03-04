@@ -1,4 +1,4 @@
-Let's now create a time-averager function that emits an average of the input numbers computed every 10 seconds. Copy the code below to the editor on the right.
+Let's now create a time-averager function that will read a stream of cloud events and emits an average of the input numbers across multiple invocations over the past 10 seconds. Copy the code below to the editor on the right.
 <pre class="file" data-filename="TimeAverager.java" data-target="replace">package com.acme;
 
 import java.time.Duration;
