@@ -6,7 +6,7 @@ riff streaming processor create time-averager \
   --output out
 ```{{execute}}
 
-Before starting to push events, let us watch the input events `kubectl exec riff-dev -it -- subscribe in --payload-encoding raw`{{execute T2}} and output events `kubectl exec riff-dev -it -- subscribe out --payload-encoding raw`{{execute T3}}
+Before starting to push events, let us watch the input events `kubectl exec riff-dev -it -- subscribe in --payload-encoding raw`{{execute InputEvents}} and output events `kubectl exec riff-dev -it -- subscribe out --payload-encoding raw`{{execute OutputEvents}}
 
 Now, we can push events to the input stream using:
 ```
