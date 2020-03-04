@@ -15,6 +15,8 @@ public class TimeAverager implements Function&lt;Flux&lt;Float&gt;, Flux&lt;Floa
 }
 </pre>
 
+riff's [streaming-processor](https://github.com/projectriff/streaming-processor) will read the input stream of cloud events and [java-function-invoker](https://github.com/projectriff/java-function-invoker) will invoke the function by converting the input into a [Flux](https://projectreactor.io/docs/core/release/api/reactor/core/publisher/Flux.html). Similarly, the output of the function is converted into cloud events and published to the output stream.
+
 We will now build a container with a language runtime and a riff invoker for this function. We need a registry to push the container image that is built by riff. You can use dockerhub, gcr or any other container registry. This tutorial is running a local registry. We will set a environment variable to point to the registry
 
 `export REGISTRY=[[HOST_SUBDOMAIN]]-5000-[[KATACODA_HOST]].environments.katacoda.com`{{execute}}
