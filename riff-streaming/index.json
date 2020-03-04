@@ -34,7 +34,11 @@
     }
   },
   "environment": {
-    "terminals": [{"name": "All pods", "command": "kubectl get pods -A", "target": "host01"}],
+    "terminals": [
+      {"name": "Input Events", "target": "host01"},
+      {"name": "Output Events", "target": "host01"},
+      {"name": "All pods", "command": "kubectl get pods -A", "target": "host01"}
+    ],
     "uilayout": "editor-terminal",
     "uisettings": "java",
     "uieditorpath": "/root/time-averager/src/main/java/com/acme/"

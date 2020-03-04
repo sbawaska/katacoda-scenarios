@@ -24,3 +24,5 @@ Now, provide the registry credentials so that riff can push the built images:
 In our case there are no credentials, only configure the registry URL.
 
 Build the function using `riff function create time-averager --local-path ./time-averager --tail`{{execute}}
+
+The logs here show that the programming language was detected as Java and the appropriate runtime and invoker layer were added to build a container.

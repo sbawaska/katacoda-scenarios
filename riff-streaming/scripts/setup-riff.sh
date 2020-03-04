@@ -32,10 +32,10 @@ echo "Kubernetes Started"
 
 echo "installing riff build"
 kubectl create ns apps
-kapp deploy -n apps -a cert-manager -f https://storage.googleapis.com/projectriff/release/0.5.0/cert-manager.yaml -y
-kapp deploy -n apps -a kpack -f https://storage.googleapis.com/projectriff/release/0.5.0/kpack.yaml -y
-kapp deploy -n apps -a riff-builders -f https://storage.googleapis.com/projectriff/release/0.5.0/riff-builders.yaml -y
-kapp deploy -n apps -a riff-build -f https://storage.googleapis.com/projectriff/release/0.5.0/riff-build.yaml -y
+kapp deploy -n apps -a cert-manager -f https://storage.googleapis.com/projectriff/release/0.6.0-snapshot/cert-manager.yaml -y
+kapp deploy -n apps -a kpack -f https://storage.googleapis.com/projectriff/release/0.6.0-snapshot/kpack.yaml -y
+kapp deploy -n apps -a riff-builders -f https://storage.googleapis.com/projectriff/release/0.6.0-snapshot/riff-builders.yaml -y
+kapp deploy -n apps -a riff-build -f https://storage.googleapis.com/projectriff/release/0.6.0-snapshot/riff-build.yaml -y
 echo "riff build installed"
 
 echo "installing riff streaming runtime"
@@ -50,3 +50,7 @@ kubectl create namespace kafka
 helm install kafka --namespace kafka incubator/kafka --set replicas=1 --set zookeeper.replicaCount=1 --wait
 echo "kafka installed!"
 
+# run dev-utils pod
+kubectl create serviceaccount riff-dev
+kubectl create rolebinding riff-dev-edit --clusterrole=edit --serviceaccount=default:riff-dev
+kubectl run riff-dev --serviceaccount=riff-dev --generator=run-pod/v1 --image=projectriff/dev-utils
