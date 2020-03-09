@@ -23,10 +23,6 @@ curl https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bas
 
 echo "tools installed!"
 
-# start registry
-echo "starting a local registry for built container images"
-docker run -d -p 5000:5000 --name registry registry:2
-
 echo "Waiting for Kubernetes to start. This may take a few moments, please wait..."
 while [ `minikube status &>/dev/null; echo $?` -ne 0 ]; do sleep 1; done
 echo "Kubernetes Started"
@@ -56,7 +52,6 @@ kubectl create serviceaccount riff-dev
 kubectl create rolebinding riff-dev-edit --clusterrole=edit --serviceaccount=default:riff-dev
 kubectl run riff-dev --serviceaccount=riff-dev --generator=run-pod/v1 --image=projectriff/dev-utils
 
-# start the registry again
-docker stop registry
-docker rm registry
+# start registry
+echo "starting a local registry for built container images"
 docker run -d -p 5000:5000 --name registry registry:2
