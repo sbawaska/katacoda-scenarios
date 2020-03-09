@@ -1,3 +1,5 @@
+#!/bin/bash
+
 echo "Starting kubernetes using minikube..."
 minikube delete
 minikube start --cpus=2 --memory='2000mb' > /dev/null 2>&1 &
@@ -22,8 +24,6 @@ chmod +x /usr/local/bin/ytt
 # install helm 3
 curl https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bash
 
-echo "tools installed!"
-
 echo "Waiting for Kubernetes to start. This may take a few moments, please wait..."
 while [ `minikube status &>/dev/null; echo $?` -ne 0 ]; do sleep 1; done
 echo "Kubernetes Started"
@@ -34,19 +34,16 @@ kapp deploy -n apps -a cert-manager -f https://storage.googleapis.com/projectrif
 kapp deploy -n apps -a kpack -f https://storage.googleapis.com/projectriff/release/0.6.0-snapshot/kpack.yaml -y
 kapp deploy -n apps -a riff-builders -f https://storage.googleapis.com/projectriff/release/0.6.0-snapshot/riff-builders.yaml -y
 kapp deploy -n apps -a riff-build -f https://storage.googleapis.com/projectriff/release/0.6.0-snapshot/riff-build.yaml -y
-echo "riff build installed"
 
 echo "installing riff streaming runtime"
 kapp deploy -n apps -a keda -f https://storage.googleapis.com/projectriff/release/0.6.0-snapshot/keda.yaml -y
 kapp deploy -n apps -a riff-streaming-runtime -f https://storage.googleapis.com/projectriff/release/0.6.0-snapshot/riff-streaming-runtime.yaml -y
-echo "riff streaming runtime installed!"
 
 echo "installing kafka"
 helm repo add incubator https://storage.googleapis.com/kubernetes-charts-incubator
 kubectl create namespace kafka
 
 helm install kafka --namespace kafka incubator/kafka --set replicas=1 --set zookeeper.replicaCount=1 --wait
-echo "kafka installed!"
 
 # run dev-utils pod
 kubectl create serviceaccount riff-dev
