@@ -3,7 +3,8 @@ Let us know deploy the container from previous step into our k8s cluster by crea
 riff streaming processor create time-averager \
   --function-ref time-averager \
   --input in \
-  --output out
+  --output even \
+  --output odd --tail
 ```{{execute T1}}
 
 Before starting to push events, let us watch the input events `kubectl exec riff-dev -it -- subscribe in --payload-encoding raw`{{execute T3}} and output events `kubectl exec riff-dev -it -- subscribe out --payload-encoding raw`{{execute T4}}
