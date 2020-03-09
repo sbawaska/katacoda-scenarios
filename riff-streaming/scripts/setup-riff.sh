@@ -55,3 +55,8 @@ echo "kafka installed!"
 kubectl create serviceaccount riff-dev
 kubectl create rolebinding riff-dev-edit --clusterrole=edit --serviceaccount=default:riff-dev
 kubectl run riff-dev --serviceaccount=riff-dev --generator=run-pod/v1 --image=projectriff/dev-utils
+
+# start the registry again
+docker stop registry
+docker rm registry
+docker run -d -p 5000:5000 --name registry registry:2
