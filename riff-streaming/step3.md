@@ -1,4 +1,4 @@
-Let us know deploy the container from previous step into our k8s cluster by creating a streaming processor and specfying the input and output streams
+Let us now deploy the container from previous step into our k8s cluster by creating a streaming processor and specfying the input and output streams
 ```
 riff streaming processor create time-averager \
   --function-ref time-averager \
