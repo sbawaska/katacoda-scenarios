@@ -43,7 +43,7 @@ echo "installing kafka"
 helm repo add incubator https://storage.googleapis.com/kubernetes-charts-incubator
 kubectl create namespace kafka
 
-helm install kafka --namespace kafka incubator/kafka --set replicas=1 --set zookeeper.replicaCount=1 --wait
+helm install kafka --namespace kafka incubator/kafka --set replicas=1 --set zookeeper.replicaCount=1 --set kafkaHeapOptions=-Xmx256m --set zookeeper.env.ZK_HEAP_SIZE=64m --wait
 
 # run dev-utils pod
 kubectl create serviceaccount riff-dev
