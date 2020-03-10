@@ -3,7 +3,7 @@
   "description": "Install riff's streaming runtime and deploy a streaming function",
   "difficulty": "Intermediate",
   "time": "20",
-  "files": ["TimeAverager.java"],
+  "files": ["Averager.java"],
   "details": {
     "steps": [
       {
@@ -29,7 +29,7 @@
     },
     "assets": {
       "host01": [
-        {"file": "time-averager/pom.xml", "target": "/root/time-averager/"}
+        {"file": "averager/pom.xml", "target": "/root/averager/"}
       ]
     }
   },
@@ -41,7 +41,7 @@
     ],
     "uilayout": "editor-terminal",
     "uisettings": "java",
-    "uieditorpath": "/root/time-averager/src/main/java/com/acme/"
+    "uieditorpath": "/root/averager/src/main/java/com/acme/"
   },
   "backend": {
     "imageid": "minikube-running"

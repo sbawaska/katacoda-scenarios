@@ -1,16 +1,15 @@
-Let's now create a time-averager function that will read a stream of cloud events and emits an average of the input numbers across multiple invocations over the past 10 seconds. Copy the code below to the editor on the right.
-<pre class="file" data-filename="TimeAverager.java" data-target="replace">package com.acme;
+Let's now create a averager function that will read a stream of cloud events and emits an average of the input numbers across multiple invocations until a negative number is encountered. Copy the code below to the editor on the right.
+<pre class="file" data-filename="Averager.java" data-target="replace">package com.acme;
 
-import java.time.Duration;
 import java.util.function.Function;
 import reactor.core.publisher.Flux;
 import reactor.math.MathFlux;
 
-public class TimeAverager implements Function&lt;Flux&lt;Float&gt;, Flux&lt;Float&gt;&gt; {
+public class Averager implements Function&lt;Flux&lt;Float&gt;, Flux&lt;Float&gt;&gt; {
 
 	@Override
 	public Flux&lt;Float&gt; apply(Flux&lt;Float&gt; floatFlux) {
-		return floatFlux.window(Duration.ofSeconds(10)).flatMap(MathFlux::averageFloat);
+		return floatFlux.windowWhile(aFloat -> aFloat > 0.0f).flatMap(MathFlux::averageFloat);
 	}
 }
 </pre>
@@ -25,6 +24,6 @@ Now, provide the registry credentials so that riff can push the built images:
 `riff credentials apply my-reg --registry http://$REGISTRY --default-image-prefix $REGISTRY`{{execute}}
 In our case there are no credentials, only configure the registry URL.
 
-Build the function using `riff function create time-averager --local-path ./time-averager --handler com.acme.TimeAverager --tail`{{execute}}
+Build the function using `riff function create averager --local-path ./averager --handler com.acme.Averager --tail`{{execute}}
 
 The logs here show that the programming language was detected as Java and the appropriate runtime and invoker layer were added to build a container.
