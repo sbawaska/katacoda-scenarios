@@ -1,8 +1,6 @@
 #!/bin/bash
 
 echo "Starting kubernetes using minikube..."
-minikube delete
-minikube start --cpus=2 --memory='2000mb' > /dev/null 2>&1 &
 
 echo "installing required tools..."
 # install riff cli
