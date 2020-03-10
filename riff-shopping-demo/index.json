@@ -31,6 +31,7 @@
       }
     ],
     "intro": {
+      "code": "scripts/setup-riff.sh",
       "text": "intro.md"
     },
     "finish": {
@@ -38,9 +39,9 @@
     }
   },
   "environment": {
-    "uilayout": "terminal"
+    "uilayout": "terminal-terminal"
   },
   "backend": {
-    "imageid": "minikube"
+    "imageid": "kubernetes-cluster"
   }
 }
