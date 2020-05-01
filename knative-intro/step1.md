@@ -6,7 +6,7 @@
     kubectl apply --filename https://github.com/knative/serving/releases/download/v0.14.0/serving-crds.yaml
     kubectl apply --filename https://github.com/knative/serving/releases/download/v0.14.0/serving-core.yaml
     ```{{execute}}
-1. Install contour as the networking layer
+1. Install contour as the networking layer. (Knative also supports Courier, Gloo, Istio and Kourier as options)
     ```
     kubectl apply --filename https://github.com/knative/net-contour/releases/download/v0.14.0/contour.yaml
     kubectl apply --filename https://github.com/knative/net-contour/releases/download/v0.14.0/net-contour.yaml
