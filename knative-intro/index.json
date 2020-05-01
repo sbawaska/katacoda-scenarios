@@ -19,6 +19,7 @@
       }
     ],
     "intro": {
+      "code": "scripts/install-dependencies.sh",
       "text": "intro.md"
     },
     "finish": {
