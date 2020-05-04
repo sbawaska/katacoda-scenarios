@@ -1,4 +1,4 @@
-## Deploy an application
+## Deploy and autoscale application
 
 We are going to deploy the [Hello world sample application](https://knative.dev/docs/serving/samples/hello-world/helloworld-go/). This application reads in an env variable TARGET and prints `Hello ${TARGET}!`. If TARGET is not specified, it will use `World` as the TARGET.
 
@@ -16,8 +16,9 @@ INGRESS_PORT=$(kubectl get svc envoy --namespace contour-external --output 'json
 Then invoke the application using curl:
 ```
 curl http://$MINIKUBE_IP:$INGRESS_PORT/ -H 'Host: demo.default.example.com'
-```{{execute}}
+```{{execute T1}}
 
+### Scale down to zero
 You can run `watch kubectl get pods`{{execute T2}} in a new Terminal tab to see a pod created to serve the requests. Knative will scale this pod down to zero if there are no incoming requests for 60 seconds by default.
 
 You can wait for the pods to scale down to zero and then issue the above `curl` again to see the pod spin up and serve the request.
