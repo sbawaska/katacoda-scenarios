@@ -2,7 +2,9 @@
 
 We are going to deploy the [Hello world sample application](https://knative.dev/docs/serving/samples/hello-world/helloworld-go/). This application reads in an env variable TARGET and prints `Hello ${TARGET}!`. If TARGET is not specified, it will use `World` as the TARGET.
 
-We will now deploy the application by specfying the image location and the `TARGET` env variable. Knative defines a `service.serving.knative.dev` CRD to control the lifecycle of the application (not to be confused with kubernetes service). We will use the `kn` cli to create the Knative service:
+We will now deploy the application by specfying the image location and the `TARGET` env variable.
+
+Knative defines a `service.serving.knative.dev` CRD to control the lifecycle of the application (not to be confused with kubernetes service). We will use the `kn` cli to create the Knative service:
 
 ```
 kn service create demo --image gcr.io/knative-samples/helloworld-go --env TARGET=blue

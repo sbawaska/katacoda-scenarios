@@ -2,9 +2,11 @@
 The Knative `service` resource creates additional resources "route, configuration and revision" to manage the lifecycle of the application.
 - revision: just like a git revision, any change to the Service's `spec.template` results in a new revision
 - route: control traffic to several revisions
+
 You can list those resources by running `kubectl get ksvc,configuration,route,revision` or by using the `kn` cli
 
-We will now update the service to change the `TARGET` env variable to `green`
+We will now update the service to change the `TARGET` env variable to `green`.
+
 But, before we do that, let us add a `blue` tag to our existing revision.
 ```
 kn service update demo --tag $(kn revision list -o 'jsonpath={.items[0].metadata.name}')=blue
